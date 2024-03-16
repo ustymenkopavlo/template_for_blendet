@@ -1,10 +1,11 @@
 import { Schema, model } from "mongoose";
+import mongooseFindorcreate from 'mongoose-findorcreate';
 
 const userSchema = new Schema(
   {
     password: {
       type: String,
-      required: true,
+      required: false,
     },
     email: {
       type: String,
@@ -19,6 +20,7 @@ const userSchema = new Schema(
     versionKey: false,
     timestamps: true,
   }
-);
+)
+userSchema.plugin(mongooseFindorcreate);
 
 export default model("User", userSchema);
