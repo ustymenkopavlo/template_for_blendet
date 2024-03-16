@@ -1,10 +1,11 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose';
+import findOrCreate from 'mongoose-findorcreate';
 
 const userSchema = new Schema(
   {
     password: {
       type: String,
-      required: true,
+      required: false,
     },
     email: {
       type: String,
@@ -20,5 +21,5 @@ const userSchema = new Schema(
     timestamps: true,
   }
 );
-
-export default model("User", userSchema);
+userSchema.plugin(findOrCreate);
+export default model('User', userSchema);
